@@ -29,6 +29,7 @@ public class StrConsumerListener {
             },
             containerFactory = "strContainerFactory")*/
     @StrConsumerCustomListener(groupId = "group-1",
+            containerFactory = "validMessageContainerFactory",
             topicPartitions = {
                     @TopicPartition(topic = "str-topic", partitions = {"1"})
             })
