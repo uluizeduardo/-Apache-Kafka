@@ -3,7 +3,6 @@ package com.kafka.strconsumer.listeners;
 import com.kafka.strconsumer.custom.StrConsumerCustomListener;
 import lombok.SneakyThrows;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
 import org.springframework.stereotype.Component;
 
@@ -11,11 +10,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class StrConsumerListener {
 
-    /*@KafkaListener(groupId = "group-1",
-            topicPartitions = {
-                    @TopicPartition(topic = "str-topic", partitions = {"0"})
-            },
-            containerFactory = "strContainerFactory")*/
     @SneakyThrows
     @StrConsumerCustomListener(groupId = "group-1",
             topicPartitions = {
@@ -26,11 +20,6 @@ public class StrConsumerListener {
         throw new IllegalArgumentException("EXCEPTION ... ");
     }
 
-    /*@KafkaListener(groupId = "group-1",
-            topicPartitions = {
-                @TopicPartition(topic = "str-topic", partitions = {"1"})
-            },
-            containerFactory = "strContainerFactory")*/
     @StrConsumerCustomListener(groupId = "group-1",
             containerFactory = "validMessageContainerFactory",
             topicPartitions = {
@@ -41,7 +30,6 @@ public class StrConsumerListener {
     }
 
 
-    //@KafkaListener(groupId = "group-2", topics = "str-topic", containerFactory = "strContainerFactory")
     @StrConsumerCustomListener(groupId = "group-2")
     public void history(String mensagem){
         log.info("HISTORY ::: Recebeu a mensagem {}", mensagem);
