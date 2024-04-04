@@ -28,4 +28,7 @@ public @interface StrConsumerCustomListener {
             @TopicPartition(topic = "str-topic", partitions = {"0","1"})
     };
 
+    @AliasFor(annotation = KafkaListener.class, attribute = "errorHandler")
+    String errorHandler() default "errorCustomHandler";
+
 }
